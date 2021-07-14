@@ -1,0 +1,206 @@
+.event-calendar {
+  width: 100%;
+  float: left;
+  min-height: 342px;
+}
+.event-calendar .calendar-box {
+  width: 100%;
+  max-width: 500px;
+  float: left;
+  border: 1px solid #dae1e5;
+}
+.event-calendar .calendar-box .table-condensed {
+  width: 100%;
+  background: #fff;
+}
+.event-calendar .calendar-box .table-condensed .dow {
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #dae1e5;
+  font-size: 12px;
+  color: #6d6d6d;
+  padding: 13px 5px;
+  border-left: 0;
+}
+.event-calendar .calendar-box .table-condensed .day {
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #dae1e5;
+  font-size: 16px;
+  color: #6d6d6d;
+  padding: 13px 5px;
+  border-left: 0;
+}
+.event-calendar .calendar-box .table-condensed .day:hover {
+  background: #f3f5f7;
+  cursor: pointer;
+}
+.event-calendar .calendar-box .table-condensed .day.activeEvents {
+  background: #ff7c63;
+  color: #fff;
+}
+.event-calendar .calendar-box .table-condensed .datepicker-switch {
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #dae1e5;
+  font-size: 18px;
+  color: #000;
+  padding: 13px 5px;
+  cursor: pointer;
+  border-top: 0;
+}
+.event-calendar .calendar-box .table-condensed .next {
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #dae1e5;
+  font-size: 16px;
+  color: #6d6d6d;
+  padding: 13px 5px;
+  cursor: pointer;
+  border-top: 0;
+}
+.event-calendar .calendar-box .table-condensed .prev {
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #dae1e5;
+  font-size: 16px;
+  color: #6d6d6d;
+  padding: 13px 5px;
+  cursor: pointer;
+  border-left: 0;
+  border-top: 0;
+}
+.event-calendar .calendar-box .table-condensed .new {
+  background: #fff;
+  border: 1px solid #dae1e5;
+  color: #dae1e5;
+  border-left: 0;
+}
+.event-calendar .calendar-box .table-condensed .old {
+  background: #fff;
+  border: 1px solid #dae1e5;
+  color: #dae1e5;
+  border-left: 0;
+}
+.event-calendar .calendar-box .table-condensed .active {
+  background: #ff7c63;
+  color: #fff;
+}
+.event-calendar .calendar-box .table-condensed .today {
+  background: #2b236a;
+  color: #fff;
+}
+.event-calendar .calendar-box .table-condensed .today:hover {
+  background: #2b236a;
+}
+.event-calendar .calendar-box .table-condensed .month {
+  float: left;
+  width: 25%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px 10px;
+  font-size: 16px;
+  color: #6d6d6d;
+  border-top: 0;
+}
+.event-calendar .calendar-box .table-condensed .year {
+  float: left;
+  width: 25%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px 10px;
+  font-size: 16px;
+  color: #6d6d6d;
+}
+.event-calendar .calendar-box .table-condensed .decade {
+  float: left;
+  width: 25%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px 10px;
+  font-size: 16px;
+  color: #6d6d6d;
+}
+.event-calendar .calendar-box .table-condensed .century {
+  float: left;
+  width: 25%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px 10px;
+  font-size: 16px;
+  color: #6d6d6d;
+}
+.event-calendar .calendar-box .table-condensed .year.old {
+  display: none;
+}
+.event-calendar .calendar-box .table-condensed .decade.old {
+  display: none;
+}
+.event-calendar .calendar-box .table-condensed .century.old {
+  display: none;
+}
+.event-calendar .calendar-box .table-condensed .year.new {
+  display: none;
+}
+.event-calendar .calendar-box .table-condensed .decade.new {
+  display: none;
+}
+.event-calendar .calendar-box .table-condensed .century.new {
+  display: none;
+}
+.event-calendar .eventDetails {
+  float: left;
+  padding-left: 50px;
+  width: 100%;
+  max-width: 598px;
+  height: 400px;
+  overflow: auto;
+}
+.event-calendar .eventDetails ul li {
+  list-style: none;
+  position: relative;
+  padding: 10px 0 10px 120px;
+  margin-bottom: 30px;
+}
+.event-calendar .eventDetails ul li:last-child {
+  margin-bottom: 0;
+}
+.event-calendar .eventDetails ul li .eventDateBox {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #f3f3f3;
+  border-radius: 10px;
+  text-align: center;
+}
+.event-calendar .eventDetails ul li .eventDateBox .eventDate {
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.event-calendar .eventDetails ul li .eventDateBox .eventMonth {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: -10px;
+}
+.event-calendar .eventDetails ul li .eventName {
+  font-weight: 600;
+  color: #000;
+  margin-top: 6px;
+}
+.event-calendar .eventDetails ul li .eventDesc {
+  margin: 0;
+}
+
+@media (max-width: 1199px) {
+  .event-calendar .calendar-box {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  .event-calendar .eventDetails {
+    padding-left: 0;
+    max-width: 100%;
+  }
+}

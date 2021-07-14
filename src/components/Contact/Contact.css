@@ -1,0 +1,32 @@
+.contactForm {
+  width: 100%;
+  float: left;
+  height: 400px;
+  overflow: auto;
+}
+.contactForm input,
+.contactForm textarea {
+  background: #f3f3f3;
+  border: 1px solid #e6e8ec;
+  border-radius: 5px;
+  padding: 0px 20px;
+  line-height: 50px;
+  width: 100%;
+  margin-bottom: 20px;
+  outline: none;
+}
+.contactForm textarea {
+  line-height: 20px;
+  min-height: 100px;
+  padding: 20px;
+}
+.contactForm button {
+  width: 100%;
+  line-height: 50px;
+  background: #ff7780;
+  color: #fff;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 5px;
+  border: 0;
+}

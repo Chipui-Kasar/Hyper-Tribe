@@ -1,0 +1,32 @@
+.KeyResourcesInfo,
+.DocumentsMedida {
+  width: 100%;
+  float: left;
+  height: 400px;
+  overflow: auto;
+}
+.KeyResourcesInfo li,
+.DocumentsMedida li {
+  list-style: none;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 15px;
+}
+.KeyResourcesInfo li:before,
+.DocumentsMedida li:before {
+  background: url(/src/images/arrow.png);
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 5px;
+  height: 8px;
+  content: "";
+}
+.KeyResourcesInfo li a,
+.DocumentsMedida li a {
+  color: #0091ff;
+}
+.KeyResourcesInfo li a:hover,
+.DocumentsMedida li a:hover {
+  color: #ff7c63;
+}

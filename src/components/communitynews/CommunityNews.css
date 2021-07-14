@@ -1,0 +1,52 @@
+.CommunityNewsSliderBox {
+  padding-bottom: 50px;
+}
+.CommunityNewsSliderBox .carousel-indicators {
+  position: absolute;
+  width: auto;
+  height: 20px;
+  margin: 0;
+  bottom: -25px;
+}
+.CommunityNewsSliderBox .carousel-indicators li {
+  background: #d8d8d8;
+  border-radius: 0;
+}
+.CommunityNewsSliderBox .carousel-indicators li.active {
+  background: #ff835c;
+}
+.CommunityNewsSlider {
+  width: 100%;
+  float: left;
+}
+.CommunityNewsSlider__img {
+  width: 100%;
+  height: 250px;
+  background: #f3f3f3;
+  float: left;
+  background-size: cover;
+}
+.CommunityNewsSlider h3.heading {
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 20px;
+  display: inline-block;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.CommunityNewsSlider p {
+  width: 100%;
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}

@@ -1,0 +1,39 @@
+.testInfo {
+  width: 100%;
+  float: left;
+  height: 441px;
+  overflow: auto;
+}
+.testInfo .taskList {
+  width: 100%;
+  float: left;
+  position: relative;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dae1e5;
+  text-decoration: none;
+  color: #000;
+  padding: 20px;
+  transition: 0.5s;
+}
+.testInfo .taskList:hover {
+  background: rgba(255, 124, 99, 0.1);
+  transition: 0.5s;
+}
+.testInfo .taskList:last-child {
+  margin-bottom: 0;
+  border: 0;
+  padding-bottom: 0;
+}
+.testInfo .taskList h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 5px;
+}
+.testInfo .taskList .desc {
+  float: left;
+  margin: 0;
+}
