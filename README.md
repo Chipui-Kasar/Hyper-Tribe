@@ -1,3 +1,3 @@
 # Hyper-Tribe
 
-# yarn start - run the app
+# Terminal - yarn start
