@@ -8,7 +8,7 @@ function CommunityNews(props) {
       <div className="col-md-7">
         <div className="whiteBox CommunityNewsSliderBox">
           <div className="whiteBox__heading">{props.title}</div>
-          <a href="#" className="viewAll">
+          <a href="/communitynews" className="viewAll">
             View All
           </a>
           <div className="CommunityNewsSlider">

@@ -1,0 +1,26 @@
+.searchBox {
+  float: right;
+  z-index: 2;
+  position: relative;
+}
+.searchBox:after {
+  background: url("../../images/search.png") no-repeat;
+  content: "";
+  top: 14px;
+  right: 14px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transform: scale(0.8);
+}
+.searchBox input {
+  width: 40vw;
+  block-size: fit-content;
+  height: 50px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 50px 10px 20px;
+  outline: none;
+  border: 0;
+  font-size: 16px;
+}

@@ -1,0 +1,8 @@
+.contents {
+  margin-bottom: 50px;
+}
+
+.contents .CommunityNewsSlider__img {
+  background-repeat: no-repeat;
+  background-size: cover;
+}

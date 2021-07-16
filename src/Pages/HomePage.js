@@ -1,17 +1,17 @@
 import React from "react";
-import Banner from "./Banner/Banner";
-import CommunityNews from "./communitynews/CommunityNews";
-import Contact from "./Contact/Contact";
-import EventCalendar from "./EventCalendar/EventCalendar";
-import Header from "./Header/Header";
-import KeyResources from "./KeyResources/KeyResources";
-import News from "./news/News";
-import Notification from "./notification/Notification";
-import Resources from "./Resources/Resources";
-import StrategyPlan from "./StrategyPlan/StrategyPlan";
-import Task from "./Task/Task";
+import Banner from "../components/Banner/Banner";
+import CommunityNews from "../components/communitynews/CommunityNews";
+import Contact from "../components/Contact/Contact";
+import EventCalendar from "../components/EventCalendar/EventCalendar";
+import Header from "../components/Header/Header";
+import KeyResources from "../components/KeyResources/KeyResources";
+import News from "../components/news/News";
+import Notification from "../components/notification/Notification";
+import Resources from "../components/Resources/Resources";
+import StrategyPlan from "../components/StrategyPlan/StrategyPlan";
+import Task from "../components/Task/Task";
 
-function HyperTribe() {
+function HomePage() {
   return (
     <main className="wrapper">
       <Header />
@@ -40,4 +40,4 @@ function HyperTribe() {
   );
 }
 
-export default HyperTribe;
+export default HomePage;

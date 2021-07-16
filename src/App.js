@@ -1,10 +1,10 @@
 import "./App.css";
-import HyperTribe from "./components/HyperTribe";
+import HomePage from "./Pages/HomePage";
 
 function App() {
   return (
     <div>
-      <HyperTribe />
+      <HomePage />
     </div>
   );
 }
