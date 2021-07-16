@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderPage from "../HeaderPage/HeaderPage";
 
-import { Data } from "../../AllData";
+import { NewsData } from "../../AllData";
 import "../../components/news/News.css";
 
 function NewsPage() {
@@ -11,7 +11,7 @@ function NewsPage() {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            {Data.map(data => {
+            {NewsData.map(data => {
               return (
                 <div className="whiteBox paddingLR0 p50">
                   <div className="whiteBox__heading">{data.title}</div>

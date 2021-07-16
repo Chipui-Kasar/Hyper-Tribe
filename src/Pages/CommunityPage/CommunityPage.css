@@ -1,8 +1,7 @@
 .contents {
-  margin-bottom: 50px;
+  margin: 0px 50px 50px 50px;
 }
 
 .contents .CommunityNewsSlider__img {
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 400px;
 }

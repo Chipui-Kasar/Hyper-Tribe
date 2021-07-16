@@ -1,6 +1,6 @@
 import React from "react";
 import "./News.css";
-import { Data } from "../../AllData";
+import { NewsData } from "../../AllData";
 
 function News(props) {
   return (
@@ -11,7 +11,7 @@ function News(props) {
           <a href="/newspage" className="viewAll">
             View All
           </a>
-          {Data.map(data => {
+          {NewsData.map(data => {
             return (
               <div className="newsInfo">
                 <a href="#" className="newsList">
