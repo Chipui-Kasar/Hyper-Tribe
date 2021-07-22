@@ -10,17 +10,56 @@ import Notification from "../components/notification/Notification";
 import Resources from "../components/Resources/Resources";
 import StrategyPlan from "../components/StrategyPlan/StrategyPlan";
 import Task from "../components/Task/Task";
-
+import { useState, useEffect } from "react";
+import NewsData from "../../src/Data/JSONDATA.json";
 function HomePage() {
+  const [date, setDate] = useState(new Date());
+
+  const [filteredUser, setFilteruser] = useState("All");
+
+  useEffect(() => {
+    const sec = setInterval(() => setDate(new Date()), 1000);
+    return function clear() {
+      clearInterval(sec);
+    };
+  });
+
+  var currentHour = date.getHours();
+  var greet;
+  if (currentHour < 12) {
+    greet = "Good Morning";
+  } else if (currentHour >= 12 && currentHour <= 18) {
+    greet = "Good Afternoon";
+  } else if (currentHour >= 18 && currentHour <= 22) {
+    greet = "Good Evening";
+  } else if (currentHour >= 22 && currentHour <= 24) {
+    greet = "Good Night";
+  }
+
+  const onUserSelected = event => {
+    setFilteruser(event);
+    console.log(event);
+  };
   return (
     <main className="wrapper">
       <Header />
-      <Banner />
+      <Banner
+        greet={greet}
+        time={date.toLocaleTimeString()}
+        date={date.toDateString()}
+        filterUser={filteredUser}
+        onUserSelect={onUserSelected}
+      />
       <section className="contentArea">
         <div className="container">
           <div className="row">
             <CommunityNews title="Community News" />
-            <News title="News" />
+            <News
+              title="News"
+              data={NewsData.news}
+              filterUser={filteredUser}
+              onUserSelect={onUserSelected}
+            />
           </div>
           <Notification />
           <div className="row">

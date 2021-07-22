@@ -14,7 +14,7 @@ ReactDOM.render(
   <Router>
     <Switch>
       <Route path="/" exact component={App} />
-      <Route path="/newspage" component={NewsPage} />
+      <Route path="/newspage/:id" component={NewsPage} />
       <Route path="/communitynews" component={CommunityNewsPage} />
     </Switch>
   </Router>,

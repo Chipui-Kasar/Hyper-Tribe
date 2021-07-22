@@ -1,118 +1,52 @@
 import React from "react";
 import HeaderPage from "../HeaderPage/HeaderPage";
 
-import { NewsData } from "../../AllData";
+// import { NewsData } from "../../AllData";
+import News from "../../Data/JSONDATA.json";
 import "../../components/news/News.css";
 
-function NewsPage() {
+function NewsPage(props) {
   return (
     <>
       <HeaderPage />
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            {NewsData.map(data => {
-              return (
-                <div className="whiteBox paddingLR0 p50">
-                  <div className="whiteBox__heading">{data.title}</div>
-                  <div className="newsInfo">
-                    <a href="#" className="newsList">
-                      <div className="newsList__img">
-                        <img src={data.src} />
-                      </div>
-                      <h3>{data.heading}</h3>
-                      <div className="dateTimeBox">
-                        <div className="dateInfo">{data.date}</div>
-                        <div className="timeInfo">{data.time}</div>
-                      </div>
-                      <p>
-                        lorem ipsum dolor sit amet, consectetur adip lorem ipsum
-                        dolor sit amet, consectetur adip lorem ipsum dolor sit
-                        amet, consectetur adip lorem ipsum dolor sit amet,
-                        consectetur adip lorem ipsum dolor sit amet, consectetur
-                        adip lorem ipsum dolor sit amet, consectetur adip lorem
-                        ipsum dolor sit amet, consectetur adip lorem ipsum dolor
-                        sit amet, consectetur adip lorem ipsum dolor sit amet,
-                        consectetur adip lorem ipsum dolor sit amet, consectetur
-                        adip lorem ipsum dolor sit amet, consectetur adip lorem
-                        ipsum dolor sit amet, consectetur adip
-                      </p>
-                    </a>
-                    <a href="#" className="newsList">
-                      <div className="newsList__img">
-                        <img src={data.src1} />
-                      </div>
+            <div className="whiteBox paddingLR0 p50">
+              <div className="whiteBox__heading">NEWS</div>
 
-                      <h3>{data.heading}</h3>
-                      <div className="dateTimeBox">
-                        <div className="dateInfo">{data.date}</div>
-                        <div className="timeInfo">{data.time}</div>
+              <div className="newsInfo">
+                {News.news
+                  .filter(data => {
+                    if (props.match.params.id === data.permission) {
+                      return data;
+                    }
+                    if (props.match.params.id === data.id) {
+                      return data;
+                    }
+                    if (props.match.params.id === data.All) {
+                      return data;
+                    }
+                  })
+                  .map((data, key) => {
+                    return (
+                      <div key={key.id}>
+                        <a href="#" className="newsList">
+                          <div className="newsList__img">
+                            <img src={data.img} alt={data.alt} />
+                          </div>
+                          <h3>{data.title}</h3>
+                          <div className="dateTimeBox">
+                            <div className="dateInfo">{data.date}</div>
+                            <div className="timeInfo">{data.time}</div>
+                          </div>
+                          <p>{data.description}</p>
+                        </a>
                       </div>
-                      {/* <p className="desc">
-                    Praesent sagittis eu ante vel tincidunt. Integer nulla nibh,
-                    fringilla sit amet purus a, lobortis…
-                  </p> */}
-                    </a>
-                    <a href="#" className="newsList">
-                      <div className="newsList__img">
-                        <img src={data.src} />
-                      </div>
-                      <h3>{data.heading}</h3>
-                      <div className="dateTimeBox">
-                        <div className="dateInfo">{data.date}</div>
-                        <div className="timeInfo">{data.time}</div>
-                      </div>
-                      {/* <p className="desc">
-                    Praesent sagittis eu ante vel tincidunt. Integer nulla nibh,
-                    fringilla sit amet purus a, lobortis…
-                  </p> */}
-                    </a>
-                    <a href="#" className="newsList">
-                      <div className="newsList__img">
-                        <img src={data.src1} />
-                      </div>
-                      <h3>{data.heading}</h3>
-                      <div className="dateTimeBox">
-                        <div className="dateInfo">{data.date}</div>
-                        <div className="timeInfo">{data.time}</div>
-                      </div>
-                      {/* <p className="desc">
-                    Praesent sagittis eu ante vel tincidunt. Integer nulla nibh,
-                    fringilla sit amet purus a, lobortis…
-                  </p> */}
-                    </a>
-                    <a href="#" className="newsList">
-                      <div className="newsList__img">
-                        <img src={data.src} />
-                      </div>
-                      <h3>{data.heading}</h3>
-                      <div className="dateTimeBox">
-                        <div className="dateInfo">{data.date}</div>
-                        <div className="timeInfo">{data.time}</div>
-                      </div>
-                      {/* <p className="desc">
-                    Praesent sagittis eu ante vel tincidunt. Integer nulla nibh,
-                    fringilla sit amet purus a, lobortis…
-                  </p> */}
-                    </a>
-                    <a href="#" className="newsList">
-                      <div className="newsList__img">
-                        <img src={data.src1} />
-                      </div>
-                      <h3>{data.heading}</h3>
-                      <div className="dateTimeBox">
-                        <div className="dateInfo">{data.date}</div>
-                        <div className="timeInfo">{data.time}</div>
-                      </div>
-                      {/* <p className="desc">
-                    Praesent sagittis eu ante vel tincidunt. Integer nulla nibh,
-                    fringilla sit amet purus a, lobortis…
-                  </p> */}
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
+                    );
+                  })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

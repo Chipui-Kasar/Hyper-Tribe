@@ -24,7 +24,7 @@
 }
 .newsInfo .newsList:last-child {
   margin-bottom: 0;
-  border: 0;
+  border-bottom: 1px solid #dae1e5;
 }
 .newsInfo .newsList__img {
   width: 100px;

@@ -2,8 +2,14 @@ import React from "react";
 import logo from "../../images/logo.png";
 import profile from "../../images/profileImg.png";
 import "./HeaderPage.css";
+import { useState } from "react";
 
 function HeaderPage() {
+  const [search, setsearch] = useState("");
+  const searchchange = event => {
+    setsearch(event.target.value);
+  };
+
   return (
     <>
       <header className="header">
@@ -15,7 +21,12 @@ function HeaderPage() {
           </div>
           <div className="col-md-6">
             <div className="searchBox">
-              <input type="text" placeholder="Search" />
+              <input
+                type="text"
+                value={search}
+                onchange={searchchange}
+                placeholder="Search"
+              />
             </div>
           </div>
           <div className="col-md-3">
