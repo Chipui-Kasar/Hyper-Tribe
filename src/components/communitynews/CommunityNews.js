@@ -3,6 +3,7 @@ import "./CommunityNews.css";
 import communityNews from "../../images/CommunityNews.png";
 import Data from "../../Data/CommunityNews.json";
 import JData from "../../Data/JSONDATA.json";
+import { Link } from "react-router-dom";
 
 function CommunityNews(props) {
   return (
@@ -10,9 +11,9 @@ function CommunityNews(props) {
       <div className="col-md-7">
         <div className="whiteBox CommunityNewsSliderBox">
           <div className="whiteBox__heading">{props.title}</div>
-          <a href="/communitynews" className="viewAll">
+          <Link to="/communitynews" className="viewAll">
             View All
-          </a>
+          </Link>
           <div className="CommunityNewsSlider">
             <div
               id="CommunityNewsSlider"

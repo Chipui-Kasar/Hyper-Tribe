@@ -2,14 +2,15 @@ import React from "react";
 import logo from "../../images/logo.png";
 import profile from "../../images/profileImg.png";
 import "./Header.css";
+import { Link } from "react-router-dom";
 function Header() {
   return (
     <>
       <header className="header">
         <div className="container">
-          <a className="logo" href="/">
+          <Link className="logo" to="/">
             <img src={logo} alt="" />
-          </a>
+          </Link>
           <div className="profilerinfo">
             <div
               className="profileImg"

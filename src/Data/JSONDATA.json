@@ -8,7 +8,7 @@
       "alt": "Image title",
       "date": "06 July 2021",
       "time": "06:54",
-      "permission": "Chipui",
+      "permission": "Venkat",
       "All": "All"
     },
     {
@@ -64,6 +64,17 @@
       "date": "06 Sep 2021",
       "time": "06 Sep 2019",
       "permission": "Suba",
+      "All": "All"
+    },
+    {
+      "id": 7,
+      "title": "Aenean maximus volutpat ipsum, quis lacinia Praesent sagittis eu ante vel tincidunt.",
+      "description": "Aenean maximus volutpat ipsum, quis lacinia Praesent sagittis eu ante vel tincidunt. Integer nulla nibh fringilla sit amet purus a, lobortis",
+      "img": "https://online.berklee.edu/takenote/wp-content/uploads/2020/07/learn_acoustic_blues_guitar_article_image.jpg",
+      "alt": "Image title",
+      "date": "06 Sep 2019",
+      "time": "06 Sep 2019",
+      "permission": "Anish",
       "All": "All"
     }
   ],

@@ -12,18 +12,12 @@ import StrategyPlan from "../components/StrategyPlan/StrategyPlan";
 import Task from "../components/Task/Task";
 import { useState, useEffect } from "react";
 import NewsData from "../../src/Data/JSONDATA.json";
-function HomePage() {
-  const [date, setDate] = useState(new Date());
+import Clock from "react-live-clock";
 
+function HomePage() {
   const [filteredUser, setFilteruser] = useState("All");
 
-  useEffect(() => {
-    const sec = setInterval(() => setDate(new Date()), 1000);
-    return function clear() {
-      clearInterval(sec);
-    };
-  });
-
+  var date = new Date();
   var currentHour = date.getHours();
   var greet;
   if (currentHour < 12) {
@@ -38,16 +32,16 @@ function HomePage() {
 
   const onUserSelected = event => {
     setFilteruser(event);
-    console.log(event);
+    // console.log(event);
   };
   return (
     <main className="wrapper">
       <Header />
       <Banner
         greet={greet}
-        time={date.toLocaleTimeString()}
-        date={date.toDateString()}
-        filterUser={filteredUser}
+        time={<Clock format={"h:mm A"} ticking={true} />}
+        date={<Clock format={"dddd, Mo MMMM, YYYY"} ticking={true} />}
+        // filterUser={filteredUser}
         onUserSelect={onUserSelected}
       />
       <section className="contentArea">
@@ -58,7 +52,7 @@ function HomePage() {
               title="News"
               data={NewsData.news}
               filterUser={filteredUser}
-              onUserSelect={onUserSelected}
+              // onUserSelect={onUserSelected}
             />
           </div>
           <Notification />

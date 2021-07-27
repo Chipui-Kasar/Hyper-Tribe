@@ -16,13 +16,15 @@
   float: left;
   z-index: 2;
   position: relative;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .banner .profileInfo p {
   text-transform: uppercase;
-  color: #fff;
+  color: rgb(187, 184, 184);
   font-size: 16px;
   margin: 0;
+  font-family: "M Plus Rounded 1c", sans-serif;
+  font-weight: 900;
 }
 .banner .profileInfo h2 {
   text-transform: uppercase;
@@ -75,4 +77,10 @@
   .banner .searchBox {
     display: none;
   }
+}
+
+.time {
+  text-transform: none;
+  font-weight: bold;
+  margin: 0px;
 }

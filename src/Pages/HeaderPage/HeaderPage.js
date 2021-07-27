@@ -2,31 +2,21 @@ import React from "react";
 import logo from "../../images/logo.png";
 import profile from "../../images/profileImg.png";
 import "./HeaderPage.css";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function HeaderPage() {
-  const [search, setsearch] = useState("");
-  const searchchange = event => {
-    setsearch(event.target.value);
-  };
-
   return (
     <>
       <header className="header">
         <div className="container">
           <div className="col-md-3">
-            <a className="logo" href="/">
+            <Link className="logo" to="/">
               <img src={logo} alt="" />
-            </a>
+            </Link>
           </div>
           <div className="col-md-6">
             <div className="searchBox">
-              <input
-                type="text"
-                value={search}
-                onchange={searchchange}
-                placeholder="Search"
-              />
+              <input type="text" placeholder="Search" />
             </div>
           </div>
           <div className="col-md-3">
