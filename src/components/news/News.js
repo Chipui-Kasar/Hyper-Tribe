@@ -1,27 +1,8 @@
 import React from "react";
 import "./News.css";
-// import NewsData from "../../Data/JSONDATA.json";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 function News(props) {
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=81849c4a33644af7934e6530eedb7195"
-      )
-      .then(response => {
-        setData(response.data);
-        // console.log(response);
-      })
-      .catch(errorMessage => {
-        console.log("Error", errorMessage);
-      });
-  }, []);
-
   return (
     <>
       <div className="col-md-5">
@@ -35,13 +16,18 @@ function News(props) {
             View All
           </Link>
           <div className="newsInfo">
-            {data ? (
-              data.articles
+            {props.data ? (
+              props.data.articles
                 .filter(data => {
-                  if (data.source.name === props.filterUser) {
+                  if (props.filterUser === null) {
                     return data;
+                  }
+                  if (props.filterUser !== "All") {
+                    if (data.source.name === props.filterUser) {
+                      return data;
+                    }
                   } else {
-                    return false;
+                    return data;
                   }
                 })
                 .map((news, key) => {

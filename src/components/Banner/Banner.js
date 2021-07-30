@@ -2,18 +2,29 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Banner.css";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 function Banner(props) {
-  const [selectUser, setselectUser] = useState("");
+  const [selectUser, setselectUser] = useState("All");
   const [data, setData] = useState("");
 
-  let location = useLocation(); //For returning the same value when click on goback from newspage
-  console.log(location);
+  // let location = useLocation(); //For returning the same value when click on goback from newspage
+  // console.log(location);
+  const history = useHistory();
+  const location = useLocation();
 
   const handleChange = event => {
+    console.log(event.target.value);
     props.onUserSelect(event.target.value);
     setselectUser(event.target.value);
+
+    //Replacing the url link with the new selected value
+    const { value } = event?.target;
+    const params = new URLSearchParams({ source: value });
+    history.replace({
+      pathname: location.pathname,
+      search: params.toString(),
+    });
 
     // alert(user);
   };
@@ -21,7 +32,7 @@ function Banner(props) {
   useEffect(() => {
     axios
       .get(
-        "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=81849c4a33644af7934e6530eedb7195"
+        `https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=81849c4a33644af7934e6530eedb7195`
       )
       .then(response => {
         //Filtering out the duplicate name from the list of JSON
@@ -37,12 +48,24 @@ function Banner(props) {
       .catch(errorMessage => {
         console.log("Error", errorMessage);
       });
-    //For returning the same value when click on goback from newspage
-    let value = location.search.replace("?source=", "");
-    console.log(value);
+
+    //For returning the same value when clicking on goback from newspage
+    // let value = location.search.replace("?source=", "");
+    // console.log(value);
+    // setselectUser(value);
+    // props.onUserSelect(value);
+
+    let queryParams = new URLSearchParams(window.location.search);
+    let value = queryParams.get("source");
+    //Assigning null with All
+    if (value == null) {
+      value = "All";
+    }
+    //=======================
     setselectUser(value);
     props.onUserSelect(value);
-    //For returning the same value when click on goback from newspage
+    console.log(value);
+    //For returning the same value when clicking on goback from newspage
   }, []);
 
   return (
@@ -53,9 +76,14 @@ function Banner(props) {
             <p>{props.greet}</p>
             <h2>
               <select value={selectUser} onChange={handleChange}>
+                <option key="0">All</option>;
                 {data
                   ? data.map((name, key) => {
-                      return <option key={key}>{name.source.name}</option>;
+                      return (
+                        <>
+                          <option key={key + 1}>{name.source.name}</option>
+                        </>
+                      );
                     })
                   : []}
               </select>
@@ -63,9 +91,6 @@ function Banner(props) {
             <p>
               <h3 className="time">Time : {props.time}</h3>
               <p>{props.date}</p>
-
-              {/* <label>Time: {props.time}</label>
-              <label style={{ marginLeft: "40px" }}>Date: {props.date}</label> */}
             </p>
           </div>
           <div className="searchBox">

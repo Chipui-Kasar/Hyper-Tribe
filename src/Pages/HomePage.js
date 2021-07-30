@@ -13,9 +13,11 @@ import Task from "../components/Task/Task";
 import { useState, useEffect } from "react";
 import NewsData from "../../src/Data/JSONDATA.json";
 import Clock from "react-live-clock";
+import axios from "axios";
 
 function HomePage() {
   const [filteredUser, setFilteruser] = useState("All");
+  console.log(filteredUser);
 
   var date = new Date();
   var currentHour = date.getHours();
@@ -34,13 +36,29 @@ function HomePage() {
     setFilteruser(event);
     // console.log(event);
   };
+
+  const [data, setData] = useState("");
+  useEffect(() => {
+    axios
+      .get(
+        "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=81849c4a33644af7934e6530eedb7195"
+      )
+      .then(response => {
+        setData(response.data);
+        // console.log(response);
+      })
+      .catch(errorMessage => {
+        console.log("Error", errorMessage);
+      });
+  }, []);
+
   return (
     <main className="wrapper">
       <Header />
       <Banner
         greet={greet}
         time={<Clock format={"h:mm A"} ticking={true} />}
-        date={<Clock format={"dddd, Mo MMMM, YYYY"} ticking={true} />}
+        date={<Clock format={"dddd, DD-MMMM-YYYY"} ticking={true} />}
         // filterUser={filteredUser}
         onUserSelect={onUserSelected}
       />
@@ -52,6 +70,7 @@ function HomePage() {
               title="News"
               data={NewsData.news}
               filterUser={filteredUser}
+              data={data}
               // onUserSelect={onUserSelected}
             />
           </div>

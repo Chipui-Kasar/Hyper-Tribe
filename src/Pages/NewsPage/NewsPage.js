@@ -7,7 +7,7 @@ import axios from "axios";
 import "../../components/news/News.css";
 import { Link } from "react-router-dom";
 function NewsPage(props) {
-  const [data, setData] = useState();
+  const [data, setData] = useState("");
 
   useEffect(() => {
     axios
@@ -39,10 +39,13 @@ function NewsPage(props) {
                 {data
                   ? data.articles
                       .filter(data => {
-                        if (props.match.params.id === data.source.name) {
+                        if (props.match.params.id === "All") {
                           return data;
                         }
-                        if (props.match.params.id === data.All) {
+                        if (props.match.params.id === "") {
+                          return data;
+                        }
+                        if (props.match.params.id === data.source.name) {
                           return data;
                         }
                       })

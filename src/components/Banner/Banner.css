@@ -35,6 +35,7 @@
 }
 .banner .profileInfo select {
   cursor: pointer;
+  width: 35vw;
   background-color: transparent;
   text-transform: uppercase;
   font-size: 40px;
