@@ -3,6 +3,8 @@ import "./News.css";
 import { Link } from "react-router-dom";
 
 function News(props) {
+  const searchData = props.searchData;
+  console.log(searchData);
   return (
     <>
       <div className="col-md-5">
@@ -19,6 +21,7 @@ function News(props) {
             {props.data ? (
               props.data.articles
                 .filter(data => {
+                  //===============================
                   if (props.filterUser === null) {
                     return data;
                   }
@@ -29,6 +32,22 @@ function News(props) {
                   } else {
                     return data;
                   }
+
+                  //========================
+
+                  // if (searchData === "") {
+                  //   return data;
+                  // } else if (
+                  //   data.source.name.includes(searchData.toLowerCase()) ||
+                  //   data.author
+                  //     .toLowerCase()
+                  //     .includes(searchData.toLowerCase()) ||
+                  //   data.title.toLowerCase().includes(searchData.toLowerCase())
+                  // ) {
+                  //   return data;
+                  // } else {
+                  //   return false;
+                  // }
                 })
                 .map((news, key) => {
                   return (

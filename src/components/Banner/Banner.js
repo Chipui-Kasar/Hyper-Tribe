@@ -7,6 +7,7 @@ import { useHistory, useLocation } from "react-router-dom";
 function Banner(props) {
   const [selectUser, setselectUser] = useState("All");
   const [data, setData] = useState("");
+  const [inputSearch, setinputSearch] = useState("");
 
   // let location = useLocation(); //For returning the same value when click on goback from newspage
   // console.log(location);
@@ -17,6 +18,7 @@ function Banner(props) {
     console.log(event.target.value);
     props.onUserSelect(event.target.value);
     setselectUser(event.target.value);
+    setinputSearch("");
 
     //Replacing the url link with the new selected value
     const { value } = event?.target;
@@ -68,6 +70,11 @@ function Banner(props) {
     //For returning the same value when clicking on goback from newspage
   }, []);
 
+  //Search fitlter funtion
+  const searching = event => {
+    setinputSearch(event.target.value);
+  };
+
   return (
     <>
       <section className="banner">
@@ -94,7 +101,12 @@ function Banner(props) {
             </p>
           </div>
           <div className="searchBox">
-            <input type="text" placeholder="Search" />
+            <input
+              type="text"
+              value={inputSearch}
+              onChange={searching}
+              placeholder="Search"
+            />
           </div>
         </div>
       </section>

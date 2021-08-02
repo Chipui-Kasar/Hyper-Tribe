@@ -11,14 +11,14 @@ function Header() {
           <Link className="logo" to="/">
             <img src={logo} alt="" />
           </Link>
-          <div className="profilerinfo">
+          <Link to="/?profile" className="profilerinfo">
             <div
               className="profileImg"
               style={{ background: `url(${profile})` }}
             ></div>
             <div className="profileName">Aayansh</div>
             <div className="profileDes">Managing Director</div>
-          </div>
+          </Link>
         </div>
       </header>
     </>

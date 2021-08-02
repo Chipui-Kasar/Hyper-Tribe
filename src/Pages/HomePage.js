@@ -17,6 +17,7 @@ import axios from "axios";
 
 function HomePage() {
   const [filteredUser, setFilteruser] = useState("All");
+  const [searchData, setsearchData] = useState("All");
   console.log(filteredUser);
 
   var date = new Date();
@@ -52,6 +53,10 @@ function HomePage() {
       });
   }, []);
 
+  const onInputChange = event => {
+    setsearchData(event.target.value);
+  };
+
   return (
     <main className="wrapper">
       <Header />
@@ -61,6 +66,8 @@ function HomePage() {
         date={<Clock format={"dddd, DD-MMMM-YYYY"} ticking={true} />}
         // filterUser={filteredUser}
         onUserSelect={onUserSelected}
+        searchData={searchData}
+        onInputChange={onInputChange}
       />
       <section className="contentArea">
         <div className="container">
