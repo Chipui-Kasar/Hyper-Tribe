@@ -40,16 +40,27 @@ function HomePage() {
 
   const [data, setData] = useState("");
   useEffect(() => {
+    var axios = require("axios").default;
+
+    var options = {
+      method: "GET",
+      url: "https://bing-news-search1.p.rapidapi.com/news",
+      params: { textFormat: "Raw", safeSearch: "Off" },
+      headers: {
+        "x-bingapis-sdk": "true",
+        "x-rapidapi-key": "98e7daf158mshc0af65e35f7176ep17a534jsn354044d71b21",
+        "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
+      },
+    };
+
     axios
-      .get(
-        "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=81849c4a33644af7934e6530eedb7195"
-      )
-      .then(response => {
-        setData(response.data);
-        // console.log(response);
+      .request(options)
+      .then(function (response) {
+        setData(response.data.value);
+        console.log(response.data);
       })
-      .catch(errorMessage => {
-        console.log("Error", errorMessage);
+      .catch(function (error) {
+        console.error(error);
       });
   }, []);
 

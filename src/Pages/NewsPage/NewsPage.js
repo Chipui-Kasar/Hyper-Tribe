@@ -10,13 +10,27 @@ function NewsPage(props) {
   const [data, setData] = useState("");
 
   useEffect(() => {
+    var axios = require("axios").default;
+
+    var options = {
+      method: "GET",
+      url: "https://bing-news-search1.p.rapidapi.com/news",
+      params: { textFormat: "Raw", safeSearch: "Off" },
+      headers: {
+        "x-bingapis-sdk": "true",
+        "x-rapidapi-key": "98e7daf158mshc0af65e35f7176ep17a534jsn354044d71b21",
+        "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
+      },
+    };
+
     axios
-      .get(
-        "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=81849c4a33644af7934e6530eedb7195"
-      )
-      .then(response => {
-        setData(response.data);
-        console.log(response);
+      .request(options)
+      .then(function (response) {
+        setData(response.data.value);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
       });
   }, []);
   return (
@@ -37,7 +51,7 @@ function NewsPage(props) {
 
               <div className="newsInfo">
                 {data
-                  ? data.articles
+                  ? data
                       .filter(data => {
                         if (props.match.params.id === "All") {
                           return data;
@@ -45,7 +59,7 @@ function NewsPage(props) {
                         if (props.match.params.id === "") {
                           return data;
                         }
-                        if (props.match.params.id === data.source.name) {
+                        if (props.match.params.id === data.name) {
                           return data;
                         }
                       })
@@ -59,15 +73,17 @@ function NewsPage(props) {
                               rel="noreferrer"
                             >
                               <div className="newsList__img">
-                                <img src={data.urlToImage} />
+                                <img src={data.image.thumbnail.contentUrl} />
                               </div>
-                              <h3>{data.title}</h3>
+                              <h3>{data.name}</h3>
                               <div className="dateTimeBox">
                                 <div className="dateInfo">
-                                  {data.publishedAt}
+                                  {data.datePublished}
                                 </div>
                               </div>
+
                               <p>{data.description}</p>
+                              <b>Source:{data.provider.name}</b>
                             </a>
                           </div>
                         );

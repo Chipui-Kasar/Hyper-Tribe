@@ -19,14 +19,14 @@ function News(props) {
           </Link>
           <div className="newsInfo">
             {props.data ? (
-              props.data.articles
+              props.data
                 .filter(data => {
                   //===============================
                   if (props.filterUser === null) {
                     return data;
                   }
                   if (props.filterUser !== "All") {
-                    if (data.source.name === props.filterUser) {
+                    if (data.name === props.filterUser) {
                       return data;
                     }
                   } else {
@@ -59,14 +59,17 @@ function News(props) {
                       rel="noreferrer"
                     >
                       <div className="newsList__img">
-                        <img src={news.urlToImage} alt={news.title} />
+                        <img
+                          src={news.image.thumbnail.contentUrl}
+                          alt={news.name}
+                        />
                       </div>
-                      <h3>{news.title}</h3>
+                      <h3>{news.name}</h3>
                       <div className="dateTimeBox">
-                        <div className="dateInfo">{news.publishedAt}</div>
+                        <div className="dateInfo">{news.datePublished}</div>
                         <div className="timeInfo"></div>
                         <br />
-                        <label>Source: {news.source.name}</label>
+                        <label>Source:{news.provider.name} </label>
                       </div>
 
                       <p className="desc">
