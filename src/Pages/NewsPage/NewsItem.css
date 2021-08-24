@@ -1,0 +1,128 @@
+.whiteBox__heading .text-right {
+  text-align: center;
+}
+.newsItemInfo {
+  width: 100%;
+  float: left;
+  min-height: 50vh;
+  /* overflow: auto; */
+  text-align: justify;
+}
+
+.newsItemInfo .newsList {
+  min-height: 112px;
+  padding-left: 140px;
+  width: 100%;
+  float: left;
+  position: relative;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dae1e5;
+  text-decoration: none;
+  color: #000;
+  padding-right: 50px;
+  padding-top: 20px;
+  transition: 0.5s;
+}
+.newsItemInfo .newsList:hover {
+  background: rgba(255, 124, 99, 0.1);
+  transition: 0.5s;
+}
+.newsItemInfo .newsList:last-child {
+  margin-bottom: 0;
+  border-bottom: 1px solid #dae1e5;
+}
+.newsItemInfo .newsList__img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  transform: translate(-0px, -50px);
+  left: 20px;
+  background: #f3f3f3;
+  border-radius: 5px;
+}
+.newsItemInfo .newsList__img img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background: #f3f3f3;
+  border-radius: 5px;
+}
+.truncate h3 {
+  font-size: 16px;
+  font-weight: 600;
+
+  margin-top: 0px;
+  margin-bottom: 10px;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.newsItemInfo .newsList .desc {
+  margin: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+/*button section */
+
+.frame {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 80px;
+  width: 250px;
+}
+
+.buttons {
+  height: 50px;
+  width: 70px;
+  border-radius: 3px;
+  background: #e0e5ec;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+  transition: box-shadow 0.6s cubic-bezier(0.79, 0.21, 0.06, 0.81);
+  font-size: 26px;
+  color: #666;
+}
+
+.buttons:hover {
+  background: radial-gradient(circle, #0ff 0%, #e0e5ec 60%);
+  color: rgba(102, 102, 102, 0.5);
+  animation: colorchange 3s linear infinite;
+}
+.buttons:active {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+}
+
+@keyframes colorchange {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.slick-track {
+  height: 400px;
+  overflow: scroll;
+}

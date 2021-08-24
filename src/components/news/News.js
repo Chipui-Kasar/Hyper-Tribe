@@ -1,82 +1,73 @@
 import React from "react";
 import "./News.css";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function News(props) {
-  const searchData = props.searchData;
-  console.log(searchData);
+  const [data, setData] = useState("");
+  useEffect(() => {
+    axios
+      .get(
+        `https://newsdata.io/api/1/news?apikey=pub_934d2e1f46f4c5a81004674c78ed660d2b4&language=en&country=us,in`
+      )
+      .then(response => {
+        setData(response.data.results);
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
   return (
     <>
       <div className="col-md-5">
         <div className="whiteBox paddingLR0 p50">
           <div className="whiteBox__heading">{props.title}</div>
-          <Link
-            to={`/newspage/${props.filterUser}`}
-            target="_self"
-            className="viewAll"
-          >
+          <Link to={`/newspage/${props.filterUser}`} className="viewAll">
             View All
           </Link>
           <div className="newsInfo">
-            {props.data ? (
-              props.data
+            {data ? (
+              data
                 .filter(data => {
                   //===============================
                   if (props.filterUser === null) {
                     return data;
                   }
+
                   if (props.filterUser !== "All") {
-                    if (data.name === props.filterUser) {
+                    if (data.source_id === props.filterUser) {
                       return data;
                     }
                   } else {
                     return data;
                   }
-
-                  //========================
-
-                  // if (searchData === "") {
-                  //   return data;
-                  // } else if (
-                  //   data.source.name.includes(searchData.toLowerCase()) ||
-                  //   data.author
-                  //     .toLowerCase()
-                  //     .includes(searchData.toLowerCase()) ||
-                  //   data.title.toLowerCase().includes(searchData.toLowerCase())
-                  // ) {
-                  //   return data;
-                  // } else {
-                  //   return false;
-                  // }
                 })
                 .map((news, key) => {
                   return (
-                    <a
-                      href={news.url}
-                      target="_blank"
+                    <Link
+                      to={`/newsitem/${news.title}`}
                       className="newsList"
                       key={key}
-                      rel="noreferrer"
                     >
                       <div className="newsList__img">
-                        <img
-                          src={news.image.thumbnail.contentUrl}
-                          alt={news.name}
-                        />
+                        <img src={news.image_url} alt={news.title} />
                       </div>
-                      <h3>{news.name}</h3>
-                      <div className="dateTimeBox">
-                        <div className="dateInfo">{news.datePublished}</div>
-                        <div className="timeInfo"></div>
-                        <br />
-                        <label>Source:{news.provider.name} </label>
+                      <div className="truncate">
+                        <h3>{news.title}</h3>
                       </div>
 
-                      <p className="desc">
-                        Praesent sagittis eu ante vel tincidunt. Integer nulla
-                        nibh, fringilla sit amet purus a, lobortis…
-                      </p>
-                    </a>
+                      <p className="desc">{news.description}</p>
+                      <div className="dateTimeBox">
+                        <div className="dateInfo">{news.pubDate}</div>
+                        <br />
+
+                        <label>
+                          Source :<i>{news.source_id}</i>
+                        </label>
+                      </div>
+                    </Link>
                   );
                 })
             ) : (
@@ -87,7 +78,7 @@ function News(props) {
                   fontWeight: 600,
                 }}
               >
-                Loading......
+                <i class="fas fa-spinner fa-pulse fa-3x"></i>
               </p>
             )}
           </div>

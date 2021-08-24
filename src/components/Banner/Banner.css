@@ -16,7 +16,10 @@
   float: left;
   z-index: 2;
   position: relative;
-  margin-top: 20px;
+  margin-top: 10px;
+}
+.greet {
+  font-size: 1.9em !important;
 }
 .banner .profileInfo p {
   text-transform: uppercase;

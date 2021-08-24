@@ -10,15 +10,13 @@ import Notification from "../components/notification/Notification";
 import Resources from "../components/Resources/Resources";
 import StrategyPlan from "../components/StrategyPlan/StrategyPlan";
 import Task from "../components/Task/Task";
-import { useState, useEffect } from "react";
-import NewsData from "../../src/Data/JSONDATA.json";
+import { useState } from "react";
+// import NewsData from "../../src/Data/JSONDATA.json";
 import Clock from "react-live-clock";
-import axios from "axios";
 
 function HomePage() {
   const [filteredUser, setFilteruser] = useState("All");
   const [searchData, setsearchData] = useState("All");
-  console.log(filteredUser);
 
   var date = new Date();
   var currentHour = date.getHours();
@@ -37,32 +35,6 @@ function HomePage() {
     setFilteruser(event);
     // console.log(event);
   };
-
-  const [data, setData] = useState("");
-  useEffect(() => {
-    var axios = require("axios").default;
-
-    var options = {
-      method: "GET",
-      url: "https://bing-news-search1.p.rapidapi.com/news",
-      params: { textFormat: "Raw", safeSearch: "Off" },
-      headers: {
-        "x-bingapis-sdk": "true",
-        "x-rapidapi-key": "98e7daf158mshc0af65e35f7176ep17a534jsn354044d71b21",
-        "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        setData(response.data.value);
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
 
   const onInputChange = event => {
     setsearchData(event.target.value);
@@ -86,9 +58,9 @@ function HomePage() {
             <CommunityNews title="Community News" />
             <News
               title="News"
-              data={NewsData.news}
+              // data={NewsData.news} local json
               filterUser={filteredUser}
-              data={data}
+
               // onUserSelect={onUserSelected}
             />
           </div>
