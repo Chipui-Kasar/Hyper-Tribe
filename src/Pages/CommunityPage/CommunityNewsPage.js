@@ -1,5 +1,5 @@
 import React from "react";
-import communityNews from "../../images/CommunityNews.png";
+//import communityNews from "../../images/CommunityNews.png";
 import HeaderPage from "../HeaderPage/HeaderPage";
 import "./CommunityPage.css";
 import { CommunityNewsData } from "../../Data/AllData";

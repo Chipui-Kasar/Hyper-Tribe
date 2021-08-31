@@ -3,13 +3,14 @@ import "./News.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import moment from "moment";
 
 function News(props) {
   const [data, setData] = useState("");
   useEffect(() => {
     axios
       .get(
-        `https://newsdata.io/api/1/news?apikey=pub_934d2e1f46f4c5a81004674c78ed660d2b4&language=en&country=us,in`
+        `https://newsdata.io/api/1/news?apikey=pub_9690904634753207970627642fb208979fa&language=en&country=us,in&domain=mmafighting,sentinel,billboard,techcrunch,cheatsheet`
       )
       .then(response => {
         setData(response.data.results);
@@ -39,6 +40,8 @@ function News(props) {
                   if (props.filterUser !== "All") {
                     if (data.source_id === props.filterUser) {
                       return data;
+                    } else {
+                      return false;
                     }
                   } else {
                     return data;
@@ -47,7 +50,7 @@ function News(props) {
                 .map((news, key) => {
                   return (
                     <Link
-                      to={`/newsitem/${news.title}`}
+                      to={`/newsitem/${news.title}?params=${key}`}
                       className="newsList"
                       key={key}
                     >
@@ -59,8 +62,11 @@ function News(props) {
                       </div>
 
                       <p className="desc">{news.description}</p>
+
                       <div className="dateTimeBox">
-                        <div className="dateInfo">{news.pubDate}</div>
+                        <div className="dateInfo">
+                          {moment(news.pubDate).calendar()}
+                        </div>
                         <br />
 
                         <label>
@@ -78,7 +84,7 @@ function News(props) {
                   fontWeight: 600,
                 }}
               >
-                <i class="fas fa-spinner fa-pulse fa-3x"></i>
+                <i className="fas fa-spinner fa-pulse fa-3x"></i>
               </p>
             )}
           </div>

@@ -6,7 +6,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 function Banner(props) {
   const [selectUser, setselectUser] = useState("All");
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [inputSearch, setinputSearch] = useState("");
 
   // let location = useLocation(); //For returning the same value when click on goback from newspage
@@ -15,7 +15,7 @@ function Banner(props) {
   const location = useLocation();
 
   const handleChange = event => {
-    console.log(event.target.value);
+    //console.log(event.target.value); //selected source
     props.onUserSelect(event.target.value);
     setselectUser(event.target.value);
     setinputSearch("");
@@ -73,13 +73,14 @@ function Banner(props) {
   // }, []);
 
   useEffect(() => {
-    //https://gnews.io/api/v4/search?q=example&token=d2190a90b94e961449e522420292b6b8
-    //1-key : 84ff7f5fda04d367a4b3872c6a60f7b3
-    //2-key : d2190a90b94e961449e522420292b6b8
-    //3-key : 106c7ae560113dd4564b723802aed0db
+    //pub_867ab41db95ca4cb7da6110869b90ff70a3
+    //pub_9624eeaf246ade8243281ba907274e97895
+    //pub_9690904634753207970627642fb208979fa
+    //  ,edexlive,thenewsminute
+    //https://newsdata.io/api/1/news?apikey=YOUR_API_KEY&domain=ctvnews_london
     axios
       .get(
-        `https://newsdata.io/api/1/news?apikey=pub_934d2e1f46f4c5a81004674c78ed660d2b4&language=en&country=us,in`
+        `https://newsdata.io/api/1/news?apikey=pub_9690904634753207970627642fb208979fa&language=en&country=us,in&domain=mmafighting,billboard,techcrunch,sentinel,cheatsheet`
       )
       .then(response => {
         //Filtering out the duplicate name from the list of JSON
@@ -113,7 +114,7 @@ function Banner(props) {
     props.onUserSelect(value);
     console.log(value);
     //For returning the same value when clicking on goback from newspage
-  }, []);
+  }, [props]);
 
   //Search fitlter funtion
   const searching = event => {
@@ -125,25 +126,23 @@ function Banner(props) {
       <section className="banner">
         <div className="container">
           <div className="profileInfo">
-            <p className="greet">{props.greet}</p>
+            <p className="greet bannerColor">{props.greet}</p>
             <h2>
               <select value={selectUser} onChange={handleChange}>
                 <option key="0">All</option>;
-                {data
-                  ? data.map((name, key) => {
-                      return (
-                        <>
-                          <option key={key + 1}>{name.source_id}</option>
-                        </>
-                      );
-                    })
-                  : []}
+                {data.map((name, key) => {
+                  return (
+                    <>
+                      <option key={key}>{name.source_id}</option>
+                    </>
+                  );
+                })}
               </select>
             </h2>
-            <p>
+            <div className="bannerColor">
               <h3 className="time">Time : {props.time}</h3>
               <p>{props.date}</p>
-            </p>
+            </div>
           </div>
           <div className="searchBox">
             <input
