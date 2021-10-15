@@ -49,7 +49,7 @@ function NewsItem(props) {
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  }, [setData]);
 
   const indexOfLastItem = index * itemsPerPage + 1;
   const indexofFirstItem = indexOfLastItem - itemsPerPage;
@@ -57,7 +57,7 @@ function NewsItem(props) {
 
   const history = useHistory();
 
-  const nextClick = event => {
+  const nextClick = () => {
     setIndex((index + 1) % data.length);
     // if (
     //   props.match.params.id ===
@@ -71,6 +71,7 @@ function NewsItem(props) {
     // } else {
     //   return;
     // }
+
     history.replace(
       `/newsitem/${currentItems ? currentItems.map(data => data.title) : ""}`
     );

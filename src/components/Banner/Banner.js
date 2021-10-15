@@ -114,7 +114,7 @@ function Banner(props) {
     props.onUserSelect(value);
     console.log(value);
     //For returning the same value when clicking on goback from newspage
-  }, [props]);
+  }, [props, setData]);
 
   //Search fitlter funtion
   const searching = event => {
@@ -133,7 +133,7 @@ function Banner(props) {
                 {data.map((name, key) => {
                   return (
                     <>
-                      <option key={key}>{name.source_id}</option>
+                      <option key={key + 1}>{name.source_id}</option>
                     </>
                   );
                 })}

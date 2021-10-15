@@ -19,7 +19,7 @@ function News(props) {
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  }, [setData]);
   return (
     <>
       <div className="col-md-5">

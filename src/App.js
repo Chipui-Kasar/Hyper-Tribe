@@ -12,7 +12,7 @@ const Page404 = () => (
 );
 function App() {
   return (
-    <div>
+    <>
       <Router>
         <Switch>
           <Route path="/" exact component={HomePage} />
@@ -22,7 +22,7 @@ function App() {
           <Route component={Page404} />
         </Switch>
       </Router>
-    </div>
+    </>
   );
 }
 

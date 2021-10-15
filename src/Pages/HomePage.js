@@ -60,7 +60,6 @@ function HomePage() {
               title="News"
               // data={NewsData.news} local json
               filterUser={filteredUser}
-
               // onUserSelect={onUserSelected}
             />
           </div>

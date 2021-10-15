@@ -23,7 +23,7 @@ function NewsPage(props) {
       .catch(err => {
         console.error(err);
       });
-  }, [page]);
+  }, [page, setData]);
 
   const scrollToEnd = () => {
     setPage(page + 1);
